@@ -7,14 +7,14 @@ import BoutonAction from './BoutonAction'
  *
  * TODO modifier le code pour afficher le titre de l'action et les boutons associés.
  */
-const UneAction = ({index, action, fonctionSupp, fonctionTerminer}) => (
+const UneAction = ({action, fonctionSupp, fonctionTerminer}) => (
     <View style={styles.conteneurUneAction}>
         <Text style={styles.texteUneAction}>
             {action['titre']}
         </Text>
         <View style={styles.boutons}>
-            <BoutonAction nom={action['isTermine'] ? 'Terminé' : 'Terminer'} isTermine={action['isTermine']} onClickFunction={() => {fonctionTerminer(index)}}></BoutonAction>
-            <BoutonAction nom="Supprimer" isTermine={action['isTermine']} onClickFunction={() => {fonctionSupp(index)}}></BoutonAction>
+            <BoutonAction nom={action['isTermine'] ? 'Terminé' : 'Terminer'} isTermine={action['isTermine']} onClickFunction={() => {fonctionTerminer(action['id'])}}></BoutonAction>
+            <BoutonAction nom="Supprimer" isTermine={action['isTermine']} onClickFunction={() => {fonctionSupp(action['id'])}}></BoutonAction>
         </View>
     </View>
 )

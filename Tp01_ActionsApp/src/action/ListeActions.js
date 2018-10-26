@@ -7,7 +7,7 @@ const ListeActions = ({listActions, fonctionSupp, fonctionTerminer}) => {
 
     return (
         <View>
-            {listActions.map((act, i) => { return <UneAction key={i} index={i} action={act} fonctionSupp={fonctionSupp} fonctionTerminer={fonctionTerminer}/> })}
+            {listActions.map((act, i) => { return <UneAction key={i} action={act} fonctionSupp={fonctionSupp} fonctionTerminer={fonctionTerminer}/> })}
         </View>
     );
 }

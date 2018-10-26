@@ -17,7 +17,8 @@ export default class App extends React.Component {
         texteSaisie: '',
         actions: [],
         actionsAffichees: [],
-        optionActivee: 'Toutes'
+        optionActivee: 'Toutes',
+        nextId: 1
     }
 
     /**
@@ -36,31 +37,34 @@ export default class App extends React.Component {
     validerNouvelleAction() {
         console.log('Vous avez cliqué sur Valider !')
         let listActions = this.state.actions
+        let id = this.state.nextId
         let action = {
             'titre' : this.state.texteSaisie,
-            'isTermine' : false
+            'isTermine' : false,
+            'id' : id
         }
         listActions.push(action)
-        this.setState({actions: listActions, texteSaisie: ''}, () => this.rafraichirListeAffichee());
+        this.setState({actions: listActions, texteSaisie: '', nextId: id + 1}, () => this.rafraichirListeAffichee());
     }
 
     /**
      * Méthode invoquée lors du clic sur le bouton Supprimer une action
      */
-    supprimerAction = (index) => {
+    supprimerAction = (id) => {
         console.log('Suppression action')
         let listActions = this.state.actions
-        listActions.splice(index,1)
+        listActions = listActions.filter(act => act['id'] != id)
         this.setState({actions: listActions}, () => this.rafraichirListeAffichee())
     }
 
     /**
      * Méthode invoquée lors du clic sur Terminer une action
      */
-    terminerAction = (index) => {
+    terminerAction = (id) => {
         console.log("Clic sur Terminer");
         let listActions = this.state.actions
-        let action = listActions[index]
+        let action = listActions.filter(act => act['id'] === id)[0]
+        let index = listActions.indexOf(action)
         action.isTermine = !action.isTermine
         listActions[index] = action
         this.setState({actions: listActions}, () => this.rafraichirListeAffichee())
