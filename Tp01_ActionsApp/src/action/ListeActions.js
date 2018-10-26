@@ -3,13 +3,13 @@ import {View, Text} from 'react-native'
 import UneAction from './UneAction'
 
 
-const ListeActions = () => {
+const ListeActions = ({listActions, fonctionSupp, fonctionTerminer}) => {
 
     return (
         <View>
-            <Text>Ici prochainement une liste d'actions</Text>
+            {listActions.map((act, i) => { return <UneAction key={i} index={i} action={act} fonctionSupp={fonctionSupp} fonctionTerminer={fonctionTerminer}/> })}
         </View>
-    )
+    );
 }
 
 export default ListeActions

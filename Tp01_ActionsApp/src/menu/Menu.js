@@ -5,11 +5,11 @@ import OptionMenu from './OptionMenu'
 /**
  * Composant Menu.
  */
-const Menu = () => (
+const Menu = ({fonctionChangerOption}) => (
     <View style={styles.menu}>
-        <OptionMenu />
-        <OptionMenu />
-        <OptionMenu  />
+        <OptionMenu nomOption="Toutes" activerOption={() => {fonctionChangerOption('Toutes')}}/>
+        <OptionMenu  nomOption="Actives" activerOption={() => {fonctionChangerOption('Actives')}}/>
+        <OptionMenu   nomOption="Terminées" activerOption={() => {fonctionChangerOption('Terminees')}}/>
     </View>
 )
 
