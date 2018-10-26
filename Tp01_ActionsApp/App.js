@@ -41,8 +41,7 @@ export default class App extends React.Component {
             'isTermine' : false
         }
         listActions.push(action)
-        this.setState({actions: listActions, texteSaisie: ''});
-        this.rafraichirListeAffichee()
+        this.setState({actions: listActions, texteSaisie: ''}, () => this.rafraichirListeAffichee());
     }
 
     /**
@@ -52,8 +51,7 @@ export default class App extends React.Component {
         console.log('Suppression action')
         let listActions = this.state.actions
         listActions.splice(index,1)
-        this.setState({actions: listActions})
-        this.rafraichirListeAffichee()
+        this.setState({actions: listActions}, () => this.rafraichirListeAffichee())
     }
 
     /**
@@ -65,8 +63,7 @@ export default class App extends React.Component {
         let action = listActions[index]
         action.isTermine = !action.isTermine
         listActions[index] = action
-        this.setState({actions: listActions})
-        this.rafraichirListeAffichee()
+        this.setState({actions: listActions}, () => this.rafraichirListeAffichee())
     }
 
     /**
